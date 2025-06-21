@@ -1,0 +1,61 @@
+/* Contenedor general para centrar la lista */
+.nav-links {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 0;
+  margin: 0;
+  height: 110px; /* Altura del contenedor */
+  list-style: none;
+  flex-wrap: nowrap;
+}
+
+/* Cada link estilo base */
+.nav-link {
+  position: relative;
+  overflow: hidden; /* Oculta la "cortina" */
+  height: 80px; /* Altura inicial */
+  width: 160px; /* Ancho fijo */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: none; /* Eliminamos cualquier fondo */
+}
+
+/* Fondo animado tipo cortina */
+.nav-link::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('/assets/img/Nav-bg.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: top center;
+  transition: height 0.5s ease;
+  z-index: 1;
+}
+
+/* Hover o foco: baja la "cortina" */
+.nav-link:hover::before,
+.nav-link:focus-within::before {
+  position: absolute;
+  height: 200px;
+}
+
+/* Texto encima del fondo */
+.nav-link a {
+  position: relative;
+  z-index: 2;
+  color: #2b2b2b;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 20px 15px 0;
+  text-align: center;
+  display: block;
+}
+

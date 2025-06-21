@@ -1,0 +1,63 @@
+#servicios {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 60px 20px;
+  text-align: center;
+}
+
+.servicios {
+  color: white;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+#servicios .section-title {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: white;
+  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+}
+
+#servicios .card {
+  border: none;
+  border-radius: 15px;
+  padding: 20px;
+  margin-bottom: 30px;
+  width: 50%;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  color: white;
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+}
+
+#servicios .card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+#servicios .imgService {
+  margin-right: 15px;
+  flex-shrink: 0;
+  width: 40px; /* tamaño fijo */
+  height: auto;
+}
+
+#servicios .card-block {
+  text-align: left;
+}
+
+#servicios .card-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 5px;
+  font-family: 'League Spartan', sans-serif;
+}
+
+#servicios .card-text {
+  font-size: 1rem;
+  line-height: 1.4;
+}
