@@ -1,73 +1,13 @@
 <section id="nuestrosTrabajos" class="nuestrosTrabajos">
-    <h2>Nuestro trabajo</h2>
-    <!--Carousel Wrapper-->
-    <div class="">
-        <ul id="autoWidth" class="cs-hidden">
-            <li class="item-a">
-                <div class="box">
-                    <img class="card-img-top imgCards" src="../../../assets/img/roller-translucida.jpeg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">Roller con tela Screen</h4>
-                        <p class="card-text text-white">Filtra el sol directo, protegiendo tus espacios del deterioro
-                            que provocan los rayos solares.</p>
-                    </div>
-                </div>
-            </li>
+    <h1>TRABAJOS</h1>
 
-            <li class="item-a">
-                <div class="box">
-                    <img class="card-img-top imgCards" src="../../../assets/img/roller-blackout.jpeg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">Roller con tela Black Out</h4>
-                        <p class="card-text text-white">No deja pasar la luz. Aislante térmico y sonoro.</p>
-                    </div>
-                </div>
-            </li>
-
-            <li class="item-a">
-                <div class="box">
-                    <img class="card-img-top imgCards" src="../../../assets/img/roller-bambu.jpeg" alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">Roller Doble en tela Bambú</h4>
-                        <p class="card-text text-white">Cortinas cálidas de estilo rústico.</p>
-                    </div>
-                </div>
-            </li>
-
-            <li class="item-a">
-                <div class="box">
-                    <img class="card-img-top imgCards" src="../../../assets/img/roller-rayada.jpeg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">Roller con tela Bambú rayada</h4>
-                        <p class="card-text text-white">Al igual que el bambú liso, son ideales para ambientes rústicos.
-                        </p>
-                    </div>
-                </div>
-            </li>
-
-            <li class="item-a">
-                <div class="box">
-                    <img class="card-img-top imgCards" src="../../../assets/img/cortina-tipo-antigua.jpeg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">Cortina tradicional con pinza Americana</h4>
-                        <p class="card-text text-white">De estilo clásico. Cálidas y acogedoras.</p>
-                    </div>
-                </div>
-            </li>
-
-            <li class="item-a">
-                <div class="box">
-                    <img class="card-img-top imgCards" src="../../../assets/img/cortina-tipo-antigua-translucida.jpeg"
-                        alt="Card image cap">
-                    <div class="card-body">
-                        <h4 class="card-title text-white">Cortina tradicional con pinza italiana</h4>
-                        <p class="card-text text-white">Al igual que la pinza americana, es una cortina clásica pero con
-                            un toque más moderno.</p>
-                    </div>
+    <div #sliderContainer class="slider-container" (mouseenter)="pauseScroll()" (mouseleave)="resumeScroll()">
+        <ul #sliderGrid class="slider-grid">
+            <li *ngFor="let trabajo of trabajosInfinitos; let i = index" [class]="getItemClass(i, trabajo.size)">
+                <img [src]="trabajo.img" [alt]="trabajo.titulo" />
+                <div class="info">
+                    <h4>{{ trabajo.titulo }}</h4>
+                    <p>{{ trabajo.descripcion }}</p>
                 </div>
             </li>
         </ul>

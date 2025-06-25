@@ -1,43 +1,141 @@
-import { Component } from '@angular/core';
+import { Component, AfterViewInit, ViewChild, ElementRef, OnDestroy } from '@angular/core';
 
 @Component({
     selector: 'app-trabajos',
     templateUrl: './trabajos.component.html',
     styleUrls: ['./trabajos.component.css']
 })
-export class TrabajosComponent {
+export class TrabajosComponent implements AfterViewInit, OnDestroy {
+
+    @ViewChild('sliderContainer') sliderContainer!: ElementRef<HTMLDivElement>;
+    @ViewChild('sliderGrid') sliderGrid!: ElementRef<HTMLUListElement>;
+
+    private animationId?: number;
+    private scrollAmount = 0;
+    private speed = 0.5;
 
     trabajos = [
         {
-            img: 'assets/img/roller-translucida.jpeg',
-            titulo: 'Roller con tela Screen',
-            descripcion: 'Filtra el sol directo, protegiendo tus espacios del deterioro que provocan los rayos solares.'
-        },
-        {
             img: 'assets/img/roller-blackout.jpeg',
-            titulo: 'Roller con tela Black Out',
-            descripcion: 'No deja pasar la luz. Aislante térmico y sonoro.'
+            titulo: 'Black Out',
+            descripcion: 'Aislante térmico y sonoro. Totalmente opaca.',
+            size: 'large' // Para item de 4 filas
         },
         {
             img: 'assets/img/roller-bambu.jpeg',
-            titulo: 'Roller Doble en tela Bambú',
-            descripcion: 'Cortinas cálidas de estilo rústico.'
-        },
-        {
-            img: 'assets/img/roller-rayada.jpeg',
-            titulo: 'Roller con tela Bambú rayada',
-            descripcion: 'Al igual que el bambú liso, son ideales para ambientes rústicos.'
+            titulo: 'Bambú',
+            descripcion: 'Estilo rústico, ideal para ambientes cálidos.',
+            size: 'wide' // Para item de 2 filas, 2 columnas
         },
         {
             img: 'assets/img/cortina-tipo-antigua.jpeg',
-            titulo: 'Cortina tradicional con pinza Americana',
-            descripcion: 'De estilo clásico. Cálidas y acogedoras.'
+            titulo: 'Tradicional',
+            descripcion: 'Con pinza americana. Cálidas y acogedoras.',
+            size: 'wide' // Para item de 2 filas, 2 columnas
+        },
+        {
+            img: 'assets/img/roller-rayada.jpeg',
+            titulo: 'Bambú rayada',
+            descripcion: 'Ideal para ambientes con estilo natural.',
+            size: 'large' // Para item de 4 filas
+        },
+        {
+            img: 'assets/img/roller-translucida.jpeg',
+            titulo: 'Roller con tela Screen',
+            descripcion: 'Filtra el sol directo, protegiendo tus espacios del deterioro.',
+            size: 'normal' // Para item normal
         },
         {
             img: 'assets/img/cortina-tipo-antigua-translucida.jpeg',
-            titulo: 'Cortina tradicional con pinza italiana',
-            descripcion: 'Al igual que la pinza americana, es una cortina clásica pero con un toque más moderno.'
+            titulo: 'Pinza italiana',
+            descripcion: 'Cortina clásica con un toque más moderno.',
+            size: 'normal' // Para item normal
         }
     ];
 
+    // Duplicamos los trabajos para el efecto infinito
+    get trabajosInfinitos() {
+        return [...this.trabajos, ...this.trabajos];
+    }
+
+    ngAfterViewInit() {
+        // Pequeño delay para asegurar que el DOM esté completamente renderizado
+        setTimeout(() => {
+            this.initAutoScroll();
+        }, 100);
+    }
+
+    ngOnDestroy() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+        }
+    }
+
+    private initAutoScroll() {
+        const slider = this.sliderContainer.nativeElement;
+        const sliderGrid = this.sliderGrid.nativeElement;
+
+        // Esperamos que el DOM se renderice completamente
+        setTimeout(() => {
+            // Obtenemos todos los elementos li
+            const allItems = sliderGrid.querySelectorAll('li');
+            const originalItemsCount = this.trabajos.length;
+
+            // Calculamos el ancho real hasta el último item original
+            let maxRight = 0;
+            for (let i = 0; i < originalItemsCount; i++) {
+                const item = allItems[i] as HTMLElement;
+                if (item) {
+                    const rect = item.getBoundingClientRect();
+                    const itemRight = item.offsetLeft + item.offsetWidth;
+                    maxRight = Math.max(maxRight, itemRight);
+                }
+            }
+
+            // Agregamos un pequeño buffer para asegurar transición suave
+            const resetPoint = maxRight + 15; // gap adicional
+
+            const autoScroll = () => {
+                this.scrollAmount += this.speed;
+
+                // Reiniciamos cuando llegamos al punto calculado
+                if (this.scrollAmount >= resetPoint) {
+                    this.scrollAmount = 0;
+                }
+
+                slider.scrollLeft = this.scrollAmount;
+                this.animationId = requestAnimationFrame(autoScroll);
+            };
+
+            autoScroll();
+        }, 300);
+    }
+
+    // Método para obtener la clase CSS según el tamaño
+    getItemClass(index: number, size: string): string {
+        const baseClass = 'item';
+
+        switch (size) {
+            case 'large':
+                return `${baseClass} item-large`;
+            case 'wide':
+                return `${baseClass} item-wide`;
+            default:
+                return `${baseClass} item-normal`;
+        }
+    }
+
+    // Método para pausar/reanudar el scroll (opcional)
+    pauseScroll() {
+        if (this.animationId) {
+            cancelAnimationFrame(this.animationId);
+            this.animationId = undefined;
+        }
+    }
+
+    resumeScroll() {
+        if (!this.animationId) {
+            this.initAutoScroll();
+        }
+    }
 }

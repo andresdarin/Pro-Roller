@@ -1,5 +1,12 @@
 <header class="main-header" id="main-header" style="margin-bottom: 0px;">
-    <ul class="nav-links" style="margin-bottom: 0px;">
+    <!-- Botón hamburguesa para móviles -->
+    <button class="hamburger-btn" [class.active]="menuAbierto" (click)="toggleMenu()">
+        <span></span>
+        <span></span>
+        <span></span>
+    </button>
+
+    <ul class="nav-links" [class.menu-abierto]="menuAbierto" style="margin-bottom: 0px;">
         <li class="nav-link confeccion">
             <div class="cortina"></div>
             <a class="scroll-link" href="#nuestrosTrabajos" data-ancla="nuestrosTrabajos"
@@ -10,9 +17,10 @@
             <div class="cortina"></div>
             <a class="scroll-link" href="#servicios" data-ancla="servicios" (click)="hideBurguer()">Servicios</a>
         </li>
+
         <li class="nav-link contacto">
             <div class="cortina"></div>
-            <a class="scroll-link" href="#contacto" data-ancla="contacto" (click)="hideBurguer()">Contacto</a>
+            <a class="scroll-link" href="#contacto2" data-ancla="contacto" (click)="hideBurguer()">Contacto</a>
         </li>
     </ul>
 </header>

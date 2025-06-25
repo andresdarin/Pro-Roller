@@ -1,0 +1,195 @@
+#contacto2 {
+  background-image: url('/assets/img/bg-contacto.png'); /* Asegurate de tener esta imagen */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  padding: 20px 20px;
+  position: relative;
+  z-index: 1;
+    display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+
+#contacto2::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+}
+
+#contacto2 .content {
+  max-width: 1200px;
+  max-height: 100%;
+  margin: 0 auto;
+  color: white;
+  text-align: center;
+  width: 100%;
+  
+}
+
+#contacto2 .contacto-titulo h1 {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 5rem;
+  font-weight: 700;
+  margin: 20px;
+  color: black;
+}
+
+#contacto2 header {
+  font-family: 'League Spartan', sans-serif;
+  font-size: 1.5rem;
+  margin-bottom: 40px;
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.5);
+}
+
+#contacto2 .box2 {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+#contacto2 .form-control {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 40px;
+  border: none;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #fff;
+  backdrop-filter: blur(5px);
+  box-shadow: inset 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+#contacto2 textarea.form-control {
+  resize: none;
+  height: 500px;
+}
+
+
+#contacto2 .form-control::placeholder {
+  color: #ddd;
+}
+
+#contacto2 .form-control:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+#contacto2 .alert.alert-danger {
+  color: #ffb3b3;
+  font-size: 0.9rem;
+  margin-top: -15px;
+  margin-bottom: 10px;
+}
+
+#contacto2 .actions.special {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#contacto2 .buttonContacto {
+  background: linear-gradient(135deg, #00c6ff, #0072ff);
+  color: white;
+  padding: 12px 40px;
+  border: none;
+  border-radius: 30px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+#contacto2 .buttonContacto:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 114, 255, 0.5);
+}
+
+#contacto2 .action-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 15px;
+  padding: 20px 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(8px);
+}
+
+#contacto2 .mensajeLlamada {
+  flex: 3;
+  font-size: 1.5rem;
+  font-weight: bold;
+  color:rgba(43, 43, 43, 0.58);
+  margin: 0;
+  text-align: left;
+}
+
+#contacto2 .btn-img-submit {
+  flex: 1;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  justify-content: flex-end;
+  transition: transform 0.2s ease;
+}
+
+#contacto2 .btn-img-submit:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+#contacto2 .img-enviar {
+  width: 100%;
+  max-width: 120px;
+  height: auto;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.4));
+  transition: transform 0.2s ease;
+}
+
+#contacto2 .btn-img-submit:hover .img-enviar {
+  transform: scale(1.05);
+}
+
+@media (max-width: 768px) {
+  .main{
+    padding: 0 20px;
+  }
+
+  #contacto2 .action-row {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+  }
+
+  #contacto2 .btn-img-submit {
+    justify-content: center;
+  }
+
+  #contacto2 .img-enviar {
+    max-width: 100px;
+  }
+
+  #contacto2 .mensajeLlamada{
+    display: none;
+  }
+
+    #contacto2 .contacto-titulo h1{
+      text-align: center;
+  font-size: 4rem;
+  font-weight: 700;
+  margin: 20px;
+  color: black;
+  }
+}
+

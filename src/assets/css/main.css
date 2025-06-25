@@ -2,31 +2,12 @@ html {
     scroll-behavior: smooth;
 }
 
-.imagen_logo {
-    height: 0px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.imagen_logo .logo {
-    margin-top: 40%;
-    width: 30%
-}
 
 .imgCards {
     width: 350px;
     height: 290px;
 }
 
-.buttonPlanesWpp {
-    background-image: url("../img/whatsapp-logo.png");
-    background-repeat: round;
-    height: 45px;
-    width: 45px;
-    margin: 0 auto;
-    /*margin-left: 50%;*/
-}
 
 .content {
     width: 60%;
@@ -205,48 +186,8 @@ button.style2.down {
     background-image: url("../img/upload.png");
 }
 
-@media screen and (max-width: 1024px) {
-    .imagen_logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .imagen_logo .logo {
-        margin-top: 75%;
-        width: 45%
-    }
-}
 
-@media screen and (max-width: 800px) {
-    .imagen_logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .imagen_logo .logo {
-        margin-top: 67%;
-        width: 45%
-    }
-}
 
-@media screen and (max-width: 550px) {
-    .imagen_logo {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .imagen_logo .logo {
-        margin-top: 80%;
-        width: 45%
-    }
-}
-
-.buttonPlanesWpp:hover {
-    box-shadow: 1px -1px 0 1px green;
-    /*box-shadow: 2px 2px 10px #666;*/
-    transform: rotate(360deg);
-    transition: 0.7s all ease;
-}
 
 @media screen and (max-width: 750px) {
     .slider {

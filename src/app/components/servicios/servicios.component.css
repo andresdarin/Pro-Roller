@@ -1,49 +1,71 @@
 #servicios {
+  background-color: #2b2b2b;
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  padding: 60px 20px;
+  padding: 80px 20px;
   text-align: center;
+  position: relative;
+  z-index: 1;
 }
 
-.servicios {
-  color: white;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+#servicios::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  background: rgba(0, 0, 0, 0.6); /* Oscurecer fondo */
+  z-index: -1;
+}
+
+.servicios{
+  display: flex;
+  flex-direction: row;
+}
+
+#servicios .cortina{
+  width: 400px;
+  height: auto;
+  border-radius: 5px;
 }
 
 #servicios .section-title {
-  font-family: 'League Spartan', sans-serif;
-  font-size: 2.5rem;
-  margin-bottom: 40px;
-  color: white;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.5);
+  color: #bac692;
+  text-align: center;
+  font-size: 4rem;
+  font-familiy: 'League Spartan', Tahoma, Geneva, Verdana, sans-serif;
+  font-weight: 700;
+  margin-bottom: 20px;
 }
 
+
 #servicios .card {
-  border: none;
-  border-radius: 15px;
-  padding: 20px;
-  margin-bottom: 30px;
-  width: 50%;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  color: white;
-  backdrop-filter: blur(5px);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 20px;
+  padding: 30px;
+  margin: 20px auto;
+  max-width: 700px;
+  height: 90%;
+  color: #ffffff;
+  backdrop-filter: blur(15px);
   display: flex;
   align-items: center;
+  gap: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 #servicios .card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+  transform: scale(1.03);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.5);
 }
 
 #servicios .imgService {
-  margin-right: 15px;
-  flex-shrink: 0;
-  width: 40px; /* tamaño fijo */
-  height: auto;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 5px rgba(255,255,255,0.3));
 }
 
 #servicios .card-block {
@@ -51,13 +73,36 @@
 }
 
 #servicios .card-title {
-  font-size: 1.2rem;
+  font-size: 1.6rem;
   font-weight: bold;
-  margin-bottom: 5px;
+  text-align: center;
+  margin-bottom: 10px;
   font-family: 'League Spartan', sans-serif;
+  color: #ffffff;
 }
 
 #servicios .card-text {
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: #f0f0f0;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  #servicios .card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #servicios .imgService {
+    margin: 0 0 15px 0;
+  }
+
+  #servicios .card-block {
+    text-align: center;
+  }
+
+    #servicios .decorativa {
+    display: none;
+  }
 }

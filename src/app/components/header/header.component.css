@@ -1,5 +1,6 @@
 /* Contenedor general para centrar la lista */
 .nav-links {
+    position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -44,7 +45,6 @@
 .nav-link:hover::before,
 .nav-link:focus-within::before {
   position: absolute;
-  height: 200px;
 }
 
 /* Texto encima del fondo */
@@ -59,3 +59,140 @@
   display: block;
 }
 
+.hamburger-btn {
+  display: none;
+}
+
+/* Media Queries para Responsive */
+
+/* Móviles y tablets muy pequeñas (hasta 768px) */
+@media (max-width: 768px) {
+  .main-header {
+    position: absolute;
+  }
+  
+  .nav-links {
+    flex-direction: row;
+    align-items: left;
+    position: absolute;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px 0;
+    gap: 10px;
+    z-index: 1000;
+    height: 105px;
+
+    /* oculto por defecto */
+    transform: translateY(-30px);
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.3s ease;
+  }
+
+  .nav-links.menu-abierto {
+    transform: translateY(0);
+    opacity: 1;
+    pointer-events: auto;
+    background: transparent; 
+    max-width: 100%;
+    padding: 0 15% 0 5%;
+  }
+  
+  .nav-link {
+    width: 200px;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    overflow: visible; /* Permitir que se vea el contenido */
+  }
+  
+  /* Resetear el ::before en móviles para que no interfiera */
+  .nav-link::before {
+    display: none;
+  }
+  
+  .nav-link a {
+    padding: 12px 15px;
+    font-size: 16px;
+    position: static; /* Cambiar de relative a static */
+    z-index: auto;
+    background: rgba(43, 43, 43, 0.1);
+    border-radius: 8px;
+    transition: background 0.3s ease;
+  }
+  
+  .nav-link:hover a {
+    background: rgba(43, 43, 43, 0.2);
+  }
+  
+  /* Botón hamburguesa */
+  .hamburger-btn {
+    display: block;
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    z-index: 1001;
+  }
+  
+  .hamburger-btn span {
+    display: block;
+    width: 25px;
+    height: 3px;
+    background: #2b2b2b;
+    margin: 5px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+  }
+  
+  .hamburger-btn.active span:nth-child(1) {
+    transform: rotate(-45deg) translate(-5px, 6px);
+  }
+  
+  .hamburger-btn.active span:nth-child(2) {
+    opacity: 0;
+  }
+  
+  .hamburger-btn.active span:nth-child(3) {
+    transform: rotate(45deg) translate(-5px, -6px);
+  }
+}
+
+/* Móviles pequeños (hasta 480px) */
+@media (max-width: 480px) {
+  .main-header {
+    padding: 0 10px;
+  }
+  
+  .nav-link {
+    width: 180px;
+    height: 45px;
+  }
+  
+  /* Mantener el ::before oculto también en móviles pequeños */
+  .nav-link::before {
+    display: none;
+  }
+  
+  .nav-link a {
+    font-size: 15px;
+    padding: 10px 12px;
+    position: static;
+    z-index: auto;
+    background: rgba(43, 43, 43, 0.1);
+    border-radius: 8px;
+  }
+  
+  .hamburger-btn {
+    right: 15px;
+  }
+
+  .scroll-link{
+    color: white !important;
+  }
+}

@@ -1,0 +1,67 @@
+.boton-fijo-wpp {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    z-index: 999;
+    
+    /* Dimensiones */
+    width: 90px;
+    height: 90px;
+    
+    /* Estilo del botón */
+    border: none;
+    border-radius: 50%; /* Hace el botón circular */
+    cursor: pointer;
+    
+    /* Imagen de fondo - CORREGIDO */
+    background-image: url('../../../assets/img/Wp-icon.png');
+    background-size: 60px 60px; /* Tamaño del ícono */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-color: transparent; /* Fondo transparente */
+    
+    /* Efectos */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease-in-out;
+}
+
+.boton-fijo-wpp:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.imagen_logo {
+    height: 0px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.imagen_logo .logo {
+    margin-top: 40rem;
+    width: 30%;
+}
+
+
+@media (max-width: 600px) {
+    .boton-fijo-wpp {
+        width: 70px;
+        height: 70px;
+        background-size: 50px 50px; /* Ajusta el tamaño del ícono para pantallas pequeñas */
+    }
+    .imagen_logo .logo {
+        margin-top: 80%;
+        width: 85%;
+    }
+    .home{
+        height: 50vh;
+    }
+    .scrollTop{
+        position: fixed;
+        bottom: 100px;
+        left: 30px;
+        opacity: 0.6;
+        width: 3rem;
+        height: 3rem;
+    }
+}

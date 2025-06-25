@@ -1,46 +1,49 @@
 <section id="contacto2" class="main style3 secondary pt-3">
     <div class="content">
-        <header style="text-align: center;">
-            Completa el formulario y a la brevedad nos estaremos comunicando contigo. Muchas gracias.
+        <header class="contacto-titulo" style="text-align: center;">
+            <h1>CONTACTO</h1>
         </header>
-        <div class="box2">
-            <form (ngSubmit)="contactForm(form)" #form="ngForm" novalidate>
-                <div class="fields">
-                    <div class="field half">
-                        <input type="text" class="form-control" placeholder="Nombre" name="nombre" ngModel required
-                            #nombre="ngModel" />
-                        <div *ngIf="nombre.invalid && nombre.touched" class="alert alert-danger">
-                            Dato requerido
-                        </div>
-                    </div>
-                    <div class="field half">
-                        <input type="email" class="form-control" placeholder="E-Mail" name="email" ngModel required
-                            pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel" />
-                        <div *ngIf="email.errors?.required && email.touched" class="alert alert-danger">
-                            Dato requerido
-                        </div>
-                        <div *ngIf="email.errors?.pattern" class="alert alert-danger">
-                            No cumple con el formato de correos
-                        </div>
-                    </div>
-                    <div class="field">
-                        <textarea class="form-control" placeholder="Mensaje" cols="30" rows="5" name="mensaje" ngModel
-                            required minlength="30" #mensaje="ngModel"></textarea>
-                        <div *ngIf="mensaje.errors?.required && mensaje.touched" class="alert alert-danger">
-                            Dato requerido
-                        </div>
-                        <div *ngIf="mensaje.errors?.minlength" class="alert alert-danger">
-                            Escriba un mínimo de 30 caracteres
-                        </div>
+        <form (ngSubmit)="contactForm(form)" #form="ngForm" novalidate>
+            <div class="fields">
+                <div class="field half">
+                    <input type="text" class="form-control" placeholder="Nombre" name="nombre" ngModel required
+                        #nombre="ngModel" />
+                    <div *ngIf="nombre.invalid && nombre.touched" class="alert alert-danger">
+                        Dato requerido
                     </div>
                 </div>
+                <div class="field half">
+                    <input type="email" class="form-control" placeholder="E-Mail" name="email" ngModel required
+                        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" #email="ngModel" />
+                    <div *ngIf="email.errors?.required && email.touched" class="alert alert-danger">
+                        Dato requerido
+                    </div>
+                    <div *ngIf="email.errors?.pattern" class="alert alert-danger">
+                        No cumple con el formato de correos
+                    </div>
+                </div>
+                <div class="field">
+                    <textarea class="form-control" placeholder="Mensaje" cols="30" rows="5" name="mensaje" ngModel
+                        required minlength="30" #mensaje="ngModel"></textarea>
+                    <div *ngIf="mensaje.errors?.required && mensaje.touched" class="alert alert-danger">
+                        Dato requerido
+                    </div>
+                    <div *ngIf="mensaje.errors?.minlength" class="alert alert-danger">
+                        Escriba un mínimo de 30 caracteres
+                    </div>
+                </div>
+            </div>
 
-                <ul class="actions special">
-                    <button class="btn btn-block btn-sm buttonContacto" type="submit" [disabled]="form.invalid">
-                        Enviar
-                    </button>
-                </ul>
-            </form>
-        </div>
+            <ul class="actions special">
+
+                <p class="mensajeLlamada">¿Qué estás esperando para tener la tuya?</p>
+                <button type="submit" [disabled]="form.invalid" class="btn-img-submit">
+                    <img src="/assets/img/Enviar.png" alt="Enviar" class="img-enviar" />
+                </button>
+
+            </ul>
+
+
+        </form>
     </div>
 </section>
