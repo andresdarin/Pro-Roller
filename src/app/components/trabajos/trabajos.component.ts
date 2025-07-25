@@ -19,47 +19,55 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
             img: 'assets/img/roller-blackout.jpeg',
             titulo: 'Black Out',
             descripcion: 'Aislante térmico y sonoro. Totalmente opaca.',
-            size: 'large' // Para item de 4 filas
+            size: 'large'
         },
         {
             img: 'assets/img/roller-bambu.jpeg',
             titulo: 'Bambú',
             descripcion: 'Estilo rústico, ideal para ambientes cálidos.',
-            size: 'wide' // Para item de 2 filas, 2 columnas
+            size: 'wide'
         },
         {
             img: 'assets/img/cortina-tipo-antigua.jpeg',
             titulo: 'Tradicional',
             descripcion: 'Con pinza americana. Cálidas y acogedoras.',
-            size: 'wide' // Para item de 2 filas, 2 columnas
+            size: 'wide'
         },
         {
             img: 'assets/img/roller-rayada.jpeg',
             titulo: 'Bambú rayada',
             descripcion: 'Ideal para ambientes con estilo natural.',
-            size: 'large' // Para item de 4 filas
+            size: 'large'
         },
         {
             img: 'assets/img/roller-translucida.jpeg',
             titulo: 'Roller con tela Screen',
             descripcion: 'Filtra el sol directo, protegiendo tus espacios del deterioro.',
-            size: 'normal' // Para item normal
+            size: 'normal'
         },
         {
             img: 'assets/img/cortina-tipo-antigua-translucida.jpeg',
             titulo: 'Pinza italiana',
             descripcion: 'Cortina clásica con un toque más moderno.',
-            size: 'normal' // Para item normal
+            size: 'normal'
         }
     ];
 
-    // Duplicamos los trabajos para el efecto infinito
+    // Genera 40 trabajos mezclando los existentes
     get trabajosInfinitos() {
-        return [...this.trabajos, ...this.trabajos];
+        const trabajosExtendidos = [];
+        for (let i = 0; i < 40; i++) {
+            const original = this.trabajos[i % this.trabajos.length];
+            trabajosExtendidos.push({
+                ...original,
+                titulo: `${original.titulo} ${i + 1}` // opcional: numerar para diferenciarlos
+            });
+        }
+        return trabajosExtendidos;
     }
 
     ngAfterViewInit() {
-        // Pequeño delay para asegurar que el DOM esté completamente renderizado
+        // Delay para asegurar que el DOM esté listo
         setTimeout(() => {
             this.initAutoScroll();
         }, 100);
@@ -75,30 +83,22 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         const slider = this.sliderContainer.nativeElement;
         const sliderGrid = this.sliderGrid.nativeElement;
 
-        // Esperamos que el DOM se renderice completamente
         setTimeout(() => {
-            // Obtenemos todos los elementos li
             const allItems = sliderGrid.querySelectorAll('li');
-            const originalItemsCount = this.trabajos.length;
 
-            // Calculamos el ancho real hasta el último item original
+            // Calcular ancho total de los ítems visibles (en vez de solo los originales)
             let maxRight = 0;
-            for (let i = 0; i < originalItemsCount; i++) {
-                const item = allItems[i] as HTMLElement;
-                if (item) {
-                    const rect = item.getBoundingClientRect();
-                    const itemRight = item.offsetLeft + item.offsetWidth;
-                    maxRight = Math.max(maxRight, itemRight);
-                }
-            }
+            allItems.forEach((item: Element) => {
+                const el = item as HTMLElement;
+                const right = el.offsetLeft + el.offsetWidth;
+                maxRight = Math.max(maxRight, right);
+            });
 
-            // Agregamos un pequeño buffer para asegurar transición suave
-            const resetPoint = maxRight + 15; // gap adicional
+            const resetPoint = maxRight + 50; // padding extra para que reinicie suave
 
             const autoScroll = () => {
                 this.scrollAmount += this.speed;
 
-                // Reiniciamos cuando llegamos al punto calculado
                 if (this.scrollAmount >= resetPoint) {
                     this.scrollAmount = 0;
                 }
@@ -111,10 +111,8 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         }, 300);
     }
 
-    // Método para obtener la clase CSS según el tamaño
     getItemClass(index: number, size: string): string {
         const baseClass = 'item';
-
         switch (size) {
             case 'large':
                 return `${baseClass} item-large`;
@@ -125,7 +123,6 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         }
     }
 
-    // Método para pausar/reanudar el scroll (opcional)
     pauseScroll() {
         if (this.animationId) {
             cancelAnimationFrame(this.animationId);

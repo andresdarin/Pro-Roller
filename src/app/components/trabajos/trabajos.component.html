@@ -1,6 +1,4 @@
 <section id="nuestrosTrabajos" class="nuestrosTrabajos">
-    <h1>TRABAJOS</h1>
-
     <div #sliderContainer class="slider-container" (mouseenter)="pauseScroll()" (mouseleave)="resumeScroll()">
         <ul #sliderGrid class="slider-grid">
             <li *ngFor="let trabajo of trabajosInfinitos; let i = index" [class]="getItemClass(i, trabajo.size)">

@@ -39,7 +39,7 @@
 
 .imagen_logo .logo {
     margin-top: 40rem;
-    width: 30%;
+    height: 30rem;
 }
 
 
@@ -50,6 +50,8 @@
         background-size: 50px 50px; /* Ajusta el tamaño del ícono para pantallas pequeñas */
     }
     .imagen_logo .logo {
+        height: 20rem;
+        width: 20rem;
         margin-top: 80%;
         width: 85%;
     }

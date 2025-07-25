@@ -1,5 +1,5 @@
 #contacto2 {
-  background-image: url('/assets/img/bg-contacto.png'); /* Asegurate de tener esta imagen */
+  background-image: url('/assets/img/bg-contacto.png');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
@@ -31,7 +31,6 @@
 }
 
 #contacto2 .contacto-titulo h1 {
-  font-family: 'League Spartan', sans-serif;
   font-size: 5rem;
   font-weight: 700;
   margin: 20px;

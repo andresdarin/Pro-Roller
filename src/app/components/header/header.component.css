@@ -1,198 +1,170 @@
-/* Contenedor general para centrar la lista */
+/* Contenedor general */
 .nav-links {
-    position: relative;
+  position: center;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 30px;
+  gap: 32px;
   padding: 0;
   margin: 0;
-  height: 110px; /* Altura del contenedor */
+  height: 40px;
   list-style: none;
   flex-wrap: nowrap;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Cada link estilo base */
+/* Cada link base */
 .nav-link {
   position: relative;
-  overflow: hidden; /* Oculta la "cortina" */
-  height: 80px; /* Altura inicial */
-  width: 160px; /* Ancho fijo */
+  cursor: pointer;
+  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  cursor: pointer;
-  background: none; /* Eliminamos cualquier fondo */
+  padding: 0 16px;
+  border-radius: 8px;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Fondo animado tipo cortina */
-.nav-link::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background-image: url('/assets/img/Nav-bg.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: top center;
-  transition: height 0.5s ease;
-  z-index: 1;
-}
-
-/* Hover o foco: baja la "cortina" */
-.nav-link:hover::before,
-.nav-link:focus-within::before {
-  position: absolute;
-}
-
-/* Texto encima del fondo */
+/* Link texto */
 .nav-link a {
   position: relative;
-  z-index: 2;
-  color: #2b2b2b;
+  color: #2c2c2c;
   text-decoration: none;
-  font-weight: bold;
-  padding: 20px 15px 0;
-  text-align: center;
-  display: block;
+  font-weight: 600;
+  font-size: 1rem;
+  letter-spacing: 0.03em;
+  transition: color 0.3s ease;
 }
 
+/* Hover y foco */
+.nav-link:hover,
+.nav-link:focus-within {
+  background-color:blur(#e0e7ff, 0.8);
+  outline: none;
+}
+
+.nav-link:hover a,
+.nav-link:focus-within a {
+  color: #2b2b2b
+}
+
+/* Indicador animado debajo del texto */
+.nav-link::after {
+  content: "";
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0%;
+  height: 2.5px;
+  background: #2b2b2b;
+  border-radius: 2px;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after,
+.nav-link:focus-within::after {
+  width: 60%;
+}
+
+/* Botón hamburguesa minimalista */
 .hamburger-btn {
   display: none;
+  position: absolute;
+  top: 50%;
+  right: 24px;
+  transform: translateY(-50%);
+  width: 28px;
+  height: 20px;
+  cursor: pointer;
+  z-index: 1100;
+  background: none;
+  border: none;
+  padding: 0;
 }
 
-/* Media Queries para Responsive */
+.hamburger-btn span {
+  display: block;
+  height: 2.8px;
+  background-color: #2c2c2c;
+  border-radius: 2px;
+  margin: 5px 0;
+  transition: all 0.4s ease;
+}
 
-/* Móviles y tablets muy pequeñas (hasta 768px) */
+/* Animación al abrir menú */
+.hamburger-btn.active span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+
+.hamburger-btn.active span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(20px);
+}
+
+.hamburger-btn.active span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
+}
+
+/* Menú responsive (móviles y tablets) */
 @media (max-width: 768px) {
-  .main-header {
-    position: absolute;
-  }
-  
   .nav-links {
-    flex-direction: row;
-    align-items: left;
-    position: absolute;
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    padding: 20px 0;
-    gap: 10px;
-    z-index: 1000;
-    height: 105px;
-
-    /* oculto por defecto */
-    transform: translateY(-30px);
+    flex-direction: column;
+    position: fixed;
+    top: 70px;
+    right: 20px;
+    background: rgba(255 255 255 / 0.95);
+    backdrop-filter: blur(15px);
+    box-shadow: 0 12px 32px rgb(0 0 0 / 0.12);
+    padding: 16px 24px;
+    border-radius: 14px;
+    gap: 18px;
     opacity: 0;
     pointer-events: none;
-    transition: all 0.3s ease;
+    transform: translateY(-20px);
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    width: 220px;
+    max-width: 80vw;
+    z-index: 1099;
   }
 
   .nav-links.menu-abierto {
-    transform: translateY(0);
     opacity: 1;
     pointer-events: auto;
-    background: transparent; 
-    max-width: 100%;
-    padding: 0 15% 0 5%;
+    transform: translateY(0);
   }
-  
+
   .nav-link {
-    width: 200px;
-    height: 50px;
-    margin: 0;
-    padding: 0;
-    overflow: visible; /* Permitir que se vea el contenido */
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 10px;
   }
-  
-  /* Resetear el ::before en móviles para que no interfiera */
-  .nav-link::before {
-    display: none;
-  }
-  
+
   .nav-link a {
-    padding: 12px 15px;
-    font-size: 16px;
-    position: static; /* Cambiar de relative a static */
-    z-index: auto;
-    background: rgba(43, 43, 43, 0.1);
-    border-radius: 8px;
-    transition: background 0.3s ease;
+    font-size: 1.1rem;
+    color: #222;
   }
-  
-  .nav-link:hover a {
-    background: rgba(43, 43, 43, 0.2);
-  }
-  
-  /* Botón hamburguesa */
-  .hamburger-btn {
-    display: block;
-    position: absolute;
-    top: 50%;
-    right: 20px;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    padding: 10px;
-    z-index: 1001;
-  }
-  
-  .hamburger-btn span {
-    display: block;
-    width: 25px;
-    height: 3px;
-    background: #2b2b2b;
-    margin: 5px 0;
-    transition: 0.3s;
-    border-radius: 2px;
-  }
-  
-  .hamburger-btn.active span:nth-child(1) {
-    transform: rotate(-45deg) translate(-5px, 6px);
-  }
-  
-  .hamburger-btn.active span:nth-child(2) {
-    opacity: 0;
-  }
-  
-  .hamburger-btn.active span:nth-child(3) {
-    transform: rotate(45deg) translate(-5px, -6px);
+
+  .nav-link:hover,
+  .nav-link:focus-within {
+    background-color: #e0e7ff;
   }
 }
 
-/* Móviles pequeños (hasta 480px) */
+/* Móviles pequeños */
 @media (max-width: 480px) {
-  .main-header {
-    padding: 0 10px;
-  }
-  
-  .nav-link {
+  .nav-links {
+    right: 12px;
     width: 180px;
-    height: 45px;
-  }
-  
-  /* Mantener el ::before oculto también en móviles pequeños */
-  .nav-link::before {
-    display: none;
-  }
-  
-  .nav-link a {
-    font-size: 15px;
-    padding: 10px 12px;
-    position: static;
-    z-index: auto;
-    background: rgba(43, 43, 43, 0.1);
-    border-radius: 8px;
-  }
-  
-  .hamburger-btn {
-    right: 15px;
+    padding: 14px 20px;
   }
 
-  .scroll-link{
-    color: white !important;
+  .nav-link a {
+    font-size: 1rem;
+  }
+
+  .hamburger-btn {
+    right: 16px;
   }
 }
