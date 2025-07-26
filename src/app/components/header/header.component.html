@@ -1,26 +1,34 @@
-<header class="main-header" id="main-header" style="margin-bottom: 0px;">
-    <!-- Botón hamburguesa para móviles -->
-    <button class="hamburger-btn" [class.active]="menuAbierto" (click)="toggleMenu()">
+<header class="main-header" id="main-header">
+    <button class="hamburger-btn" [class.active]="menuAbierto" (click)="toggleMenu()" aria-label="Abrir menú"
+        [attr.aria-expanded]="menuAbierto">
         <span></span>
         <span></span>
         <span></span>
     </button>
 
-    <ul class="nav-links" [class.menu-abierto]="menuAbierto" style="margin-bottom: 0px;">
-        <li class="nav-link confeccion">
-            <div class="cortina"></div>
-            <a class="scroll-link" href="#nuestrosTrabajos" data-ancla="nuestrosTrabajos"
-                (click)="hideBurguer()">Nosotros</a>
-        </li>
+    <!-- NAV + UL -->
+    <nav class="nav-container" [class.menu-abierto]="menuAbierto">
+        <ul class="nav-links" role="menu">
+            <li class="nav-link">
+                <a class="scroll-link" href="#nuestrosTrabajos" (click)="navigateToSection($event, 'nuestrosTrabajos')"
+                    role="menuitem">
+                    Nosotros
+                </a>
+            </li>
+            <li class="nav-link">
+                <a class="scroll-link" href="#servicios" (click)="navigateToSection($event, 'servicios')"
+                    role="menuitem">
+                    Servicios
+                </a>
+            </li>
+            <li class="nav-link">
+                <a class="scroll-link" href="#contacto2" (click)="navigateToSection($event, 'contacto2')"
+                    role="menuitem">
+                    Contacto
+                </a>
+            </li>
+        </ul>
+    </nav>
 
-        <li class="nav-link instalacion">
-            <div class="cortina"></div>
-            <a class="scroll-link" href="#servicios" data-ancla="servicios" (click)="hideBurguer()">Servicios</a>
-        </li>
-
-        <li class="nav-link contacto">
-            <div class="cortina"></div>
-            <a class="scroll-link" href="#contacto2" data-ancla="contacto" (click)="hideBurguer()">Contacto</a>
-        </li>
-    </ul>
+    <div class="menu-overlay" [class.active]="menuAbierto" (click)="closeMenu()"></div>
 </header>
