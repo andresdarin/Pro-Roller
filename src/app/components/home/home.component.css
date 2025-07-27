@@ -1,3 +1,4 @@
+/* Botón WhatsApp fijo */
 .boton-fijo-wpp {
     position: fixed;
     bottom: 20px;
@@ -5,65 +6,139 @@
     z-index: 999;
     
     /* Dimensiones */
-    width: 90px;
-    height: 90px;
+    width: 60px;
+    height: 60px;
     
     /* Estilo del botón */
     border: none;
-    border-radius: 50%; /* Hace el botón circular */
+    border-radius: 50%;
     cursor: pointer;
     
-    /* Imagen de fondo - CORREGIDO */
+    /* Fondo verde WhatsApp */
+    
+    /* Imagen de fondo - usando emoji como fallback */
     background-image: url('../../../assets/img/Wp-icon.png');
-    background-size: 60px 60px; /* Tamaño del ícono */
+    background-size: 35px 35px;
     background-repeat: no-repeat;
     background-position: center;
-    background-color: transparent; /* Fondo transparente */
     
     /* Efectos */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-    transition: transform 0.2s ease-in-out;
+    transition: all 0.3s ease;
 }
 
 .boton-fijo-wpp:hover {
     transform: scale(1.1);
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
 }
 
+/* Si la imagen no carga, mostrar ícono de texto */
+.boton-fijo-wpp::before {
+    font-size: 24px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: -1;
+}
+
+/* Contenedor del logo */
 .imagen_logo {
-    height: 0px;
     display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0;
+    min-height: 200px; /* Altura mínima en lugar de 0 */
+}
+
+.imagen_logo .logo {
+    height: 150px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .boton-fijo-wpp {
+        width: 55px;
+        height: 55px;
+        background-size: 30px 30px;
+        bottom: 15px;
+        left: 15px;
+    }
+    
+    .imagen_logo {
+        padding: 1rem 0;
+        min-height: 150px;
+    }
+    
+    .imagen_logo .logo {
+        height: 120px;
+        max-width: 90%;
+    }
+    
+    .home {
+        min-height: 50vh;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .boton-fijo-wpp {
+        width: 50px;
+        height: 50px;
+        background-size: 25px 25px;
+    }
+    
+    .imagen_logo .logo {
+        height: 400px;
+        max-width: 85%;
+    }
+    
+    .scrollTop {
+        position: fixed;
+        bottom: 80px;
+        left: 20px;
+        opacity: 0.7;
+        width: 40px;
+        height: 40px;
+        background-color: #f0f0f0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+        transition: all 0.3s ease;
+    }
+    
+    .scrollTop:hover {
+        opacity: 1;
+        transform: translateY(-2px);
+    }
+}
+
+/* Mejoras adicionales */
+.home {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.imagen_logo .logo {
-    margin-top: 40rem;
-    height: 30rem;
+/* Animación suave para todos los elementos */
+* {
+    box-sizing: border-box;
 }
 
+/* Mejora la visibilidad del botón de scroll */
+.scrollTop {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
-@media (max-width: 600px) {
-    .boton-fijo-wpp {
-        width: 70px;
-        height: 70px;
-        background-size: 50px 50px; /* Ajusta el tamaño del ícono para pantallas pequeñas */
-    }
-    .imagen_logo .logo {
-        height: 20rem;
-        width: 20rem;
-        margin-top: 80%;
-        width: 85%;
-    }
-    .home{
-        height: 50vh;
-    }
-    .scrollTop{
-        position: fixed;
-        bottom: 100px;
-        left: 30px;
-        opacity: 0.6;
-        width: 3rem;
-        height: 3rem;
-    }
+.scrollTop::before {
+    content: "↑";
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
 }
