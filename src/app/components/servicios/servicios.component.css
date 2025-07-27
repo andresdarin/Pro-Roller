@@ -83,6 +83,8 @@
 }
 
 #servicios .card-text {
+  text-align: center;
+  font-family: 'league-spartan', sans-serif;
   font-size: 1.1rem;
   line-height: 1.6;
   color: #f0f0f0;
@@ -123,4 +125,27 @@
     display: none;
   }
 
+}
+
+@media (max-width: 1024px) {
+  #servicios .card {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  #servicios .cortina{
+    display :none;
+  }
+
+  #servicios .imgService {
+    margin: 0 0 15px 0;
+  }
+
+  #servicios .card-block {
+    text-align: center;
+  }
+
+    #servicios .decorativa {
+    display: none;
+  }
 }

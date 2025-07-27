@@ -19,12 +19,11 @@
   margin-left: calc(-50vw + 50%);
   overflow: hidden;
   padding-bottom: 10px;
+  padding-top: 20px;
+  margin-top: -1rem;
   cursor: grab;
 }
 
-.slider-container:active {
-  cursor: grabbing;
-}
 
 /* Grid principal con diseño tipo Pinterest */
 .slider-grid {
@@ -107,7 +106,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  z-index: 3; /* Aumentar z-index */
+  z-index: 3;
   padding: 20px;
   background: linear-gradient(to top, 
     rgba(0, 0, 0, 0.95) 0%, 
@@ -116,17 +115,23 @@
     transparent 100%);
   color: white;
   opacity: 0;
-  visibility: hidden; /* Añadir visibility para mejor control */
-  transform: translateY(20px); /* Empezar desde abajo */
+  visibility: hidden;
+  transform: translateY(20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family: 'League Spartan', sans-serif;
+  text-align: center;
   backdrop-filter: blur(8px);
   border-bottom-left-radius: 12px;
   border-bottom-right-radius: 12px;
-  min-height: 80px; /* Asegurar altura mínima */
+  min-height: 80px;
+  max-width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  overflow: hidden;
+  word-wrap: break-word;
+  hyphens: auto;
+  box-sizing: border-box;
 }
 
 .info h4 {
@@ -135,6 +140,10 @@
   font-weight: 700;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
   line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
 }
 
 .info p {
@@ -143,9 +152,13 @@
   line-height: 1.4;
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
   opacity: 0.95;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  white-space: normal;
 }
 
-/* Mostrar info al hacer hover - MEJORADO */
+
 .item:hover .info {
   opacity: 1;
   visibility: visible;
@@ -161,28 +174,38 @@
 /* Responsive para tablets */
 @media (max-width: 768px) {
   .slider-grid {
-    grid-auto-columns: 250px;
-    grid-template-rows: repeat(8, 120px); /* Ajustado para giants */
-    gap: 12px;
-    padding: 0 15px;
+    grid-auto-columns: 200px; /* columnas más angostas */
+    grid-template-rows: repeat(10, 100px); /* más filas pero menos altas */
+    gap: 10px;
+    padding: 0 10px;
   }
-  
+
+  .item-large {
+    grid-row: span 4;
+    grid-column: span 1; /* En móvil, que no ocupe tanto horizontal */
+  }
+
+  .item-wide {
+    grid-row: span 2;
+    grid-column: span 1; /* evitar que se desborde */
+  }
+
+  .item-normal {
+    grid-row: span 2;
+    grid-column: span 1;
+  }
+
   .item-giant {
-    grid-row: span 3; /* Reducir en tablets */
-    grid-column: span 2;
+    grid-row: span 4;
+    grid-column: span 1;
   }
-  
-  .info {
-    padding: 15px;
-    min-height: 70px;
+
+  .item {
+    border-radius: 10px;
   }
-  
-  .info h4 {
-    font-size: 1.1rem;
-  }
-  
-  .info p {
-    font-size: 0.9rem;
+
+  .item img {
+    border-radius: 10px;
   }
 
   .nuestrosTrabajos h1 {

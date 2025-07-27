@@ -57,8 +57,8 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
 
         {
             img: "assets/img/IMG-20250726-WA0059.jpg",
-            titulo: "Cortina de Baño Texturizada",
-            descripcion: "Cortina de baño con textura sutil, combinando funcionalidad y estilo.",
+            titulo: "Cortina Texturizada",
+            descripcion: "Cortina con textura sutil, combinando funcionalidad y estilo.",
             size: "normal"
         },
         {

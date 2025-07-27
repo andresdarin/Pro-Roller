@@ -1,6 +1,11 @@
-<header class="main-header" id="main-header">
+<header class="main-header" [class.header-hidden]="!headerVisible" id="main-header">
+    <!-- Overlay FUERA del nav para evitar conflictos -->
+    <div class="menu-overlay" [class.active]="menuAbierto" (click)="hideBurguer()"
+        [style.display]="menuAbierto ? 'block' : 'none'">
+    </div>
+
     <button class="hamburger-btn" [class.active]="menuAbierto" (click)="toggleMenu()" aria-label="Abrir menú"
-        [attr.aria-expanded]="menuAbierto">
+        [attr.aria-expanded]="menuAbierto" type="button">
         <span></span>
         <span></span>
         <span></span>
@@ -9,26 +14,24 @@
     <!-- NAV + UL -->
     <nav class="nav-container" [class.menu-abierto]="menuAbierto">
         <ul class="nav-links" role="menu">
-            <li class="nav-link">
+            <li class="nav-link" role="none">
                 <a class="scroll-link" href="#nuestrosTrabajos" (click)="navigateToSection($event, 'nuestrosTrabajos')"
-                    role="menuitem">
+                    role="menuitem" tabindex="0">
                     Nosotros
                 </a>
             </li>
-            <li class="nav-link">
+            <li class="nav-link" role="none">
                 <a class="scroll-link" href="#servicios" (click)="navigateToSection($event, 'servicios')"
-                    role="menuitem">
+                    role="menuitem" tabindex="0">
                     Servicios
                 </a>
             </li>
-            <li class="nav-link">
+            <li class="nav-link" role="none">
                 <a class="scroll-link" href="#contacto2" (click)="navigateToSection($event, 'contacto2')"
-                    role="menuitem">
+                    role="menuitem" tabindex="0">
                     Contacto
                 </a>
             </li>
         </ul>
     </nav>
-
-    <div class="menu-overlay" [class.active]="menuAbierto" (click)="hideBurguer()"></div>
 </header>
