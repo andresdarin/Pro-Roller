@@ -24,20 +24,18 @@
   cursor: grab;
 }
 
-
 /* Grid principal con diseño tipo Pinterest */
 .slider-grid {
   display: grid;
   grid-auto-flow: column;
   grid-auto-columns: 280px;
-  grid-template-rows: repeat(8, 120px); /* Menos filas pero más altas para acomodar giants */
+  grid-template-rows: repeat(8, 120px);
   gap: 15px;
   list-style: none;
   margin: 0;
   padding: 0 20px;
-  transition: none; /* Sin transición para movimiento más fluido */
+  transition: none;
   will-change: transform;
-  /* Asegurar que no haya espacios extra */
   white-space: nowrap;
 }
 
@@ -55,7 +53,6 @@
   height: 100%;
   flex-direction: column;
   justify-content: flex-end;
-  /* Asegurar que no haya espacios */
   flex-shrink: 0;
 }
 
@@ -76,15 +73,15 @@
 }
 
 .item-giant {
-  grid-row: span 4; /* Más alto para llenar mejor el espacio */
-  grid-column: span 2; /* 2 columnas de ancho */
+  grid-row: span 4;
+  grid-column: span 2;
 }
 
 /* Efectos hover mejorados */
 .item:hover {
   transform: translateY(-8px) scale(1.03);
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2);
-  z-index: 10; /* Asegurar que esté por encima de otros elementos */
+  z-index: 10;
 }
 
 /* Imagen que ocupa toda la tarjeta */
@@ -100,7 +97,7 @@
   transition: transform 0.3s ease, filter 0.3s ease;
 }
 
-/* Overlay con información - MEJORADO */
+/* Overlay con información */
 .info {
   position: absolute;
   bottom: 0;
@@ -158,7 +155,6 @@
   white-space: normal;
 }
 
-
 .item:hover .info {
   opacity: 1;
   visibility: visible;
@@ -171,23 +167,163 @@
   filter: brightness(0.8) contrast(1.1);
 }
 
+/* ESTILOS MODAL */
+/* Modal general */
+.image-modal {
+  position: fixed;
+  inset: 0; /* top:0; left:0; right:0; bottom:0; */
+  background: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+  padding: 20px;
+  box-sizing: border-box;
+}
+
+.image-modal.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Contenedor modal */
+.modal-content {
+  position: relative;
+  width: 90vw;
+  max-width: 900px;
+  max-height: 90vh;
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(0, 0, 0, 0.8);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  background: transparent;
+  overflow: hidden;
+}
+
+/* Imagen ocupa todo el modal */
+.modal-image {
+  width: 100%;
+  max-height: 70vh; 
+  object-fit: contain; 
+  border-radius: 16px 16px 0 0;
+  position: relative; 
+  z-index: 1;
+  user-select: none;
+  pointer-events: none;
+  filter: brightness(0.85);
+  background: none; 
+  border-radius: 16px 16px 0 0;
+}
+
+/* Info con gradiente negro desde abajo */
+.modal-info {
+  position: relative;
+  z-index: 2;
+  padding: 25px 30px 35px;
+  background: linear-gradient(to top, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.5) 60%, transparent 100%);
+  color: #fff;
+  border-radius: 0 0 16px 16px; 
+  font-family: 'League Spartan', sans-serif;
+  text-align: center;
+  backdrop-filter: none;
+}
+/* Título */
+.modal-info h3 {
+  margin: 0 0 10px;
+  font-size: 2rem;
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(0,0,0,0.8);
+}
+
+/* Texto descripción */
+.modal-info p {
+  margin: 0;
+  font-size: 1.1rem;
+  opacity: 0.9;
+  line-height: 1.4;
+  text-shadow: 0 0 6px rgba(0,0,0,0.6);
+}
+
+/* Botón cerrar en esquina superior derecha */
+.close-btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(10px);
+  border: none;
+  border-radius: 50%;
+  width: 45px;
+  height: 45px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  transition: background-color 0.25s ease, transform 0.25s ease;
+  z-index: 3;
+}
+
+.close-btn:hover {
+  background: rgba(255,255,255,0.35);
+  transform: scale(1.1);
+}
+
+.close-btn svg {
+  width: 22px;
+  height: 22px;
+  stroke: currentColor;
+  stroke-width: 2;
+}
+
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8) translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
 /* Responsive para tablets */
 @media (max-width: 768px) {
+  .slider-container {
+    cursor: grab;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    touch-action: none;
+  }
+
+  .slider-container:active {
+    cursor: grabbing;
+  }
+
   .slider-grid {
-    grid-auto-columns: 200px; /* columnas más angostas */
-    grid-template-rows: repeat(10, 100px); /* más filas pero menos altas */
+    grid-auto-columns: 200px;
+    grid-template-rows: repeat(10, 100px);
     gap: 10px;
     padding: 0 10px;
   }
 
   .item-large {
     grid-row: span 4;
-    grid-column: span 1; /* En móvil, que no ocupe tanto horizontal */
+    grid-column: span 1;
   }
 
   .item-wide {
     grid-row: span 2;
-    grid-column: span 1; /* evitar que se desborde */
+    grid-column: span 1;
   }
 
   .item-normal {
@@ -202,6 +338,7 @@
 
   .item {
     border-radius: 10px;
+    transition: none; /* Desactivar transitions en móvil para mejor performance */
   }
 
   .item img {
@@ -211,6 +348,56 @@
   .nuestrosTrabajos h1 {
     font-size: 3rem;
     font-family: 'League Spartan', Tahoma, Geneva, Verdana, sans-serif;
+  }
+
+  /* Hover effects desactivados en móvil */
+  .item:hover {
+    transform: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  }
+
+  .item:hover img {
+    transform: none;
+    filter: none;
+  }
+
+  .item:hover .info {
+    opacity: 0;
+    visibility: hidden;
+  }
+
+  /* Modal responsive */
+  .modal-content {
+    max-width: 95vw;
+    max-height: 95vh;
+    padding: 10px;
+  }
+
+  .modal-image {
+    max-height: 60vh;
+    margin-bottom: 15px;
+  }
+
+  .modal-info {
+    padding: 15px;
+    max-width: 90vw;
+  }
+
+  .modal-info h3 {
+    font-size: 1.3rem;
+  }
+
+  .modal-info p {
+    font-size: 0.9rem;
+  }
+
+  .close-btn {
+    display: none;
+  }
+
+  .close-btn svg {
+    width: 18px;
+    height: 18px;
   }
 }
 
@@ -244,6 +431,40 @@
   .nuestrosTrabajos h1 {
     font-size: 2.5rem;
   }
+
+  /* Modal en móviles pequeños */
+  .modal-content {
+    max-width: 98vw;
+    max-height: 98vh;
+  }
+
+  .modal-image {
+    max-height: 55vh;
+  }
+
+  .modal-info {
+    padding: 12px;
+  }
+
+  .modal-info h3 {
+    font-size: 1.2rem;
+  }
+
+  .modal-info p {
+    font-size: 0.85rem;
+  }
+
+  .close-btn {
+    top: -8px;
+    right: -8px;
+    width: 32px;
+    height: 32px;
+  }
+
+  .close-btn svg {
+    width: 16px;
+    height: 16px;
+  }
 }
 
 /* Optimizaciones de rendimiento */
@@ -276,24 +497,110 @@
   }
 }
 
-/* Mejoras adicionales para hover en touch devices */
+/* Mejoras adicionales para touch devices */
 @media (hover: none) and (pointer: coarse) {
   .item:active .info {
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  .item:active img {
+    filter: none;
+  }
+
+  /* Feedback visual para tap */
+  .item:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+}
+
+/* Asegurar que el hover funcione correctamente en desktop */
+@media (hover: hover) and (pointer: fine) {
+  .item:hover .info {
     opacity: 1;
     visibility: visible;
     transform: translateY(0);
   }
   
-  .item:active img {
+  .item:hover img {
+    transform: scale(1.1);
     filter: brightness(0.8) contrast(1.1);
   }
 }
 
 /* Asegurar que el hover funcione correctamente */
 .item {
-  isolation: isolate; /* Crear nuevo contexto de apilamiento */
+  isolation: isolate;
 }
 
 .item:hover {
   isolation: isolate;
+}
+
+/* Prevenir selección de texto durante drag */
+.slider-container {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+/* Estilos para cuando se está arrastrando */
+.slider-container.dragging {
+  cursor: grabbing !important;
+}
+
+.slider-container.dragging .item {
+  pointer-events: none;
+}
+
+/* Feedback visual para hold - sutil pulsación */
+@media (max-width: 768px) {
+  .item:active {
+    transform: scale(0.98);
+    transition: transform 0.1s ease;
+  }
+  
+  /* Indicador visual de que se puede arrastrar */
+  .slider-container::before {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 40px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 2px;
+    z-index: 10;
+    pointer-events: none;
+  }
+  
+  .slider-container::after {
+    content: '';
+    position: absolute;
+    bottom: 5px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 12px;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 2px;
+    z-index: 11;
+    pointer-events: none;
+    animation: dragIndicator 2s ease-in-out infinite;
+  }
+}
+
+@keyframes dragIndicator {
+  0%, 100% { transform: translateX(-50%) translateX(-10px); }
+  50% { transform: translateX(-50%) translateX(10px); }
+}
+
+/* Smooth scroll para el momentum */
+.slider-grid.momentum {
+  transition: transform 0.1s ease-out;
 }
