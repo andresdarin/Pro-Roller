@@ -36,13 +36,13 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         {
             img: "assets/img/IMG-20250726-WA0053.jpg",
             titulo: "Roller Screen en Ventanal",
-            descripcion: "Cortina roller screen en un amplio ventanal, permitiendo la visibilidad exterior y filtrando la luz.",
+            descripcion: "Cortina roller screen en un amplio ventanal, permitiendo la visibilidad exterior con filtro UV.",
             size: "large"
         },
         {
             img: "assets/img/IMG-20250726-WA0056.jpg",
-            titulo: "Roller Dual en Espacio Moderno",
-            descripcion: "Cortina roller dual en un ambiente con diseño moderno, ofreciendo versatilidad en la entrada de luz.",
+            titulo: "Tradicional en pinza italiana con blackout",
+            descripcion: "Cortina tradicional en pinza italiana con blackout.",
             size: "large"
         },
         {
@@ -53,20 +53,20 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         },
         {
             img: "assets/img/IMG-20250721-WA0006.jpg",
-            titulo: "Pinza italiana 2",
-            descripcion: "Cortina clásica con un toque más moderno.",
+            titulo: "Pinza italiana",
+            descripcion: "Pinza italiana en tela Lino.",
             size: "large"
         },
         {
             img: "assets/img/cortina-tipo-antigua-translucida.jpeg",
-            titulo: "Pinza italiana 1",
-            descripcion: "Cortina clásica con un toque más moderno.",
+            titulo: "Pinza italiana",
+            descripcion: "Pinza italiana en tela Voile.",
             size: "large"
         },
         {
             img: "assets/img/IMG-20250726-WA0061.jpg",
-            titulo: "Ambiente Interior con Cortinas Suaves",
-            descripcion: "Cortinas de tela suave que crean un ambiente relajante y acogedor en el interior.",
+            titulo: "En Voile",
+            descripcion: "Cortinas en voile.",
             size: "giant"
         },
         {
@@ -77,26 +77,26 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         },
         {
             img: "assets/img/IMG-20250726-WA0057.jpg",
-            titulo: "Cortina Corta para Ventana",
-            descripcion: "Cortina corta ideal para ventanas pequeñas, brindando privacidad sin obstaculizar el espacio.",
+            titulo: "Tradicional en Blackout",
+            descripcion: "Cortina tradicional en blackout, brindando privacidad sin obstaculizar el espacio.",
             size: "normal"
         },
         {
             img: "assets/img/IMG-20250726-WA0052.jpg",
-            titulo: "Roller Blackout Gris",
-            descripcion: "Cortina roller blackout de color gris, ideal para oscurecer el ambiente.",
+            titulo: "Roller Blackout Beige",
+            descripcion: "Cortina roller blackout de color beige.",
             size: "giant"
         },
         {
             img: "assets/img/IMG-20250726-WA0050.jpg",
             titulo: "Bambú",
-            descripcion: "Estilo rústico, ideal para ambientes cálidos.",
+            descripcion: "Tela Screen 5%.",
             size: "large"
         },
         {
             img: "assets/img/IMG-20250726-WA0060.jpg",
-            titulo: "Cortina Clásica para Oficina",
-            descripcion: "Cortina clásica que brinda un toque de elegancia y privacidad a un espacio de oficina.",
+            titulo: "Cortina Clásica",
+            descripcion: "Un toque de elegancia y privacidad para tu espacio.",
             size: "normal"
         },
         {
@@ -107,13 +107,13 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         },
         {
             img: "assets/img/IMG-20250726-WA0055.jpg",
-            titulo: "Cortinas Opacas en Habitación",
-            descripcion: "Cortinas opacas que garantizan privacidad y control total de la luz en el dormitorio.",
+            titulo: "Cortinas Screen",
+            descripcion: "Cortinas opacas que garantizan privacidad y control total de la luz.",
             size: "wide"
         },
         {
             img: "assets/img/IMG-20250726-WA0062.jpg",
-            titulo: "Dormitorio con Cortina Roller",
+            titulo: "Cortina tradicional en Voile",
             descripcion: "Dormitorio con cortina roller que permite regular la entrada de luz y asegurar el descanso.",
             size: "large"
         },
@@ -125,20 +125,20 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         },
         {
             img: "assets/img/roller-rayada.jpeg",
-            titulo: "Bambú rayada",
+            titulo: "Bambú",
             descripcion: "Ideal para ambientes con estilo natural.",
             size: "large"
         },
         {
             img: "assets/img/IMG-20250726-WA0051.jpg",
-            titulo: "Cortina Blanca Tradicional",
-            descripcion: "Cortina de tela blanca clásica, aportando luminosidad a la habitación.",
+            titulo: "Cortina Roller",
+            descripcion: "Tela Screen 5%.",
             size: "large"
         },
         {
             img: "assets/img/cortina-tipo-antigua.jpeg",
             titulo: "Tradicional",
-            descripcion: "Con pinza americana. Cálidas y acogedoras.",
+            descripcion: "Cortina tradicional doble en Pinza Americana.",
             size: "giant"
         }
     ];
