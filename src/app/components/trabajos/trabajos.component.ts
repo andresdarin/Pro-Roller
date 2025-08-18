@@ -89,7 +89,7 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         },
         {
             img: "assets/img/IMG-20250726-WA0050.jpg",
-            titulo: "Bambú",
+            titulo: "Screen 5%",
             descripcion: "Tela Screen 5%.",
             size: "large"
         },
@@ -108,7 +108,7 @@ export class TrabajosComponent implements AfterViewInit, OnDestroy {
         {
             img: "assets/img/IMG-20250726-WA0055.jpg",
             titulo: "Cortinas Screen",
-            descripcion: "Cortinas opacas que garantizan privacidad y control total de la luz.",
+            descripcion: "Cortinas que garantizan privacidad y control total de la luz.",
             size: "wide"
         },
         {
